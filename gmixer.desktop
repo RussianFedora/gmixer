@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=GMixer
+Name[fr]=GMixer
+Comment=Audio mixer for the Gnome Desktop Environment
+Comment[fr]=Mixer audio pour l'environnement Gnome
+Exec=gmixer
+Icon=multimedia-volume-control
+StartupNotify=true
+Type=Application
+Categories=AudioVideo;Audio;Mixer;GTK;X-Fedora;
+X-Desktop-File-Install-Version=0.15
+
