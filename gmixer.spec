@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jun 7 2009  Leigh Scott   <leigh123linux@googlemail.com> - 1.3-6
+- bump version as I couldn't remove CVS tag
+
 * Sun Jun 7 2009  Leigh Scott   <leigh123linux@googlemail.com> - 1.3-5
 - re-add doc 
 - add icon
