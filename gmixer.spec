@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 18 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-7
+- edit desktop file so gmixer launches with trayicon
+
 * Sun Jun 7 2009  Leigh Scott   <leigh123linux@googlemail.com> - 1.3-6
 - bump version as I couldn't remove CVS tag
 
