@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 18 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-8
+- edit desktop file so gmixer launches with trayicon
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
