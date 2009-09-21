@@ -10,6 +10,6 @@ Exec=gmixer
 Icon=gmixer
 StartupNotify=true
 Type=Application
-Categories=AudioVideo;Audio;Mixer;GTK;X-Fedora;
+Categories=AudioVideo;Audio;Mixer;GTK;
 X-Desktop-File-Install-Version=0.15
 
