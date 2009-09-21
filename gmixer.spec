@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        9%{?dist}
+Release:        11%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -85,6 +85,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 21 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-11
+- remove X-Fedora from desktop file
+
+* Mon Sep 21 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-10
+- remove
+
 * Mon Sep 21 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-9
 - added German translations for desktop files
 - revert last desktop file edit and add a autostart launcher
