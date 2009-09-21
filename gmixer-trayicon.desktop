@@ -6,10 +6,12 @@ Name[fr]=GMixer
 Comment=Audio mixer for the Gnome Desktop Environment
 Comment[de]=Lautstärkeregelung für den GNOME Desktop
 Comment[fr]=Mixer audio pour l'environnement Gnome
-Exec=gmixer
+Exec=gmixer -d
 Icon=gmixer
 StartupNotify=true
 Type=Application
-Categories=AudioVideo;Audio;Mixer;GTK;X-Fedora;
-X-Desktop-File-Install-Version=0.15
-
+Categories=AudioVideo;Audio;Mixer;GTK;
+#OnlyShowIn=GNOME;XFCE;KDE;LXDE
+X-GNOME-Autostart-Phase=Desktop
+X-GNOME-Autostart-Notify=true
+X-KDE-autostart-after=panel

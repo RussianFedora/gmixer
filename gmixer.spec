@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -10,6 +10,7 @@ License:        GPLv3+
 URL:            https://launchpad.net/gmixer
 Source0:        http://launchpad.net/gmixer/1.x/%{version}/+download/%{name}-%{version}.tar.gz
 Source1:        gmixer.desktop
+Source2:        gmixer-trayicon.desktop
 Patch0:         version_fix.patch
 Patch1:         gmixer-1.3-setup-py.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -56,6 +57,11 @@ desktop-file-install \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications \
   %SOURCE1
 
+# autostart launcher
+desktop-file-install \
+  --dir $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart \
+  %SOURCE2
+
 %find_lang %{name}
 
 %clean
@@ -66,6 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc gpl.txt 
 %{_bindir}/gmixer
+%{_sysconfdir}/xdg/autostart/gmixer-trayicon.desktop
 %{python_sitelib}/gtktrayicon.py*
 %{python_sitelib}/volkeys.so
 %{python_sitelib}/gmixer-1.0-py?.?.egg-info
@@ -76,6 +83,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 21 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-8
+- added German translations for desktop files
+- revert last desktop file edit and add a autostart launcher
+
 * Fri Sep 18 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-7
 - edit desktop file so gmixer launches with trayicon
 
