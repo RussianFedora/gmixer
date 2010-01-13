@@ -1,8 +1,8 @@
-%{!?python_sitelib:  %global python_sitelib  %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 Name:           gmixer
 Version:        1.3
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -13,8 +13,8 @@ Source1:        gmixer.desktop
 Source2:        gmixer-trayicon.desktop
 Patch0:         version_fix.patch
 Patch1:         gmixer-1.3-setup-py.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:	pkgconfig
+BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+BuildRequires:  pkgconfig
 BuildRequires:  python-devel, pygtk2-codegen, pygtk2-devel, gtk2-devel
 BuildRequires:  desktop-file-utils
 Requires:       python-xlib, pygtk2, gstreamer-python
@@ -50,7 +50,7 @@ python setup.py install \
 # icon
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/pixmaps
 install -m 644 data/mixer.png \
-	$RPM_BUILD_ROOT%{_datadir}/pixmaps/gmixer.png
+           $RPM_BUILD_ROOT%{_datadir}/pixmaps/gmixer.png
 
 # menu-entry
 desktop-file-install \
@@ -73,9 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc gpl.txt 
 %{_bindir}/gmixer
 %{_sysconfdir}/xdg/autostart/gmixer-trayicon.desktop
-%{python_sitelib}/gtktrayicon.py*
-%{python_sitelib}/volkeys.so
-%{python_sitelib}/gmixer-1.0-py?.?.egg-info
+%{python_sitearch}/gtktrayicon.py*
+%{python_sitearch}/volkeys.so
+%{python_sitearch}/gmixer-1.0-py?.?.egg-info
 %{_datadir}/gmixer/
 %{_datadir}/applications/gmixer.desktop
 %{_datadir}/pixmaps/gmixer.png
@@ -83,6 +83,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan 13 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-10
+- fix python macros
+- update spec to new packaging guidelines
+
 * Mon Sep 21 2009 leigh scott <leigh123linux@googlemail.com> - 1.3-9
 - remove X-Fedora from desktop file
 
