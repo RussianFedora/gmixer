@@ -1,0 +1,25 @@
+--- gmixer-1.3.orig/src/gmixer	2009-05-01 18:12:22.000000000 +0100
++++ gmixer-1.3/src/gmixer	2010-03-16 18:21:14.000000000 +0000
+@@ -79,7 +79,7 @@ for filename in STOCKS:
+     factory.add(filename, gtk.IconSet(pixbuf))
+ factory.add_default()
+ 
+-STOCKS_THEME = [ "stock_mic","stock_line_in" , "stock_volume" ]
++STOCKS_THEME = [ "audio-input-microphone","audio-card" , "audio-volume-high" ]
+ icon_theme = gtk.icon_theme_get_default()
+ for icon_name in STOCKS_THEME:
+     try: pixbuf = icon_theme.load_icon(icon_name, 16, 16)
+@@ -98,10 +98,10 @@ PIX=[
+     ("pcm","tone"),
+     ("volume","tone"),
+     ("mix","mixer"),
+-    ("mic","stock_mic"),
+-    ("line","stock_line_in"),
++    ("mic","audio-input-microphone"),
++    ("line","audio-card"),
+     ("cd",gtk.STOCK_CDROM),
+-    ("speaker","stock_volume"),
++    ("speaker","audio-volume-high"),
+     ("headphone","headphones"),
+     ("phone","phone"),
+     ("video","video"),

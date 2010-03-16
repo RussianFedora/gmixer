@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -89,6 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Mar 16 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-13
+- Fix icon naming
+
 * Wed Jan 13 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-12
 - fix python macros
 - fix permissions on volkeys.so
