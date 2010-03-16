@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -13,6 +13,7 @@ Source1:        gmixer.desktop
 Source2:        gmixer-trayicon.desktop
 Patch0:         version_fix.patch
 Patch1:         gmixer-1.3-setup-py.patch
+Patch2:         icons.patch
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel, pygtk2-codegen, pygtk2-devel, gtk2-devel
@@ -33,7 +34,7 @@ Features:
 %setup -q
 %patch0 -p1 -b .version_fix
 %patch1 -p1 -b .gmixer-1.3-setup-py
-
+%patch2 -p1 -b .icons
 
 %build
 python setup.py build
@@ -89,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Mar 16 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-14
+- actually add the icon patch
+
 * Tue Mar 16 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-13
 - Fix icon naming
 
