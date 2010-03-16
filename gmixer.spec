@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -90,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Mar 16 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-15
+- complete the icon patch so it works
+
 * Tue Mar 16 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-14
 - actually add the icon patch
 

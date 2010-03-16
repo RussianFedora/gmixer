@@ -1,5 +1,5 @@
 --- gmixer-1.3.orig/src/gmixer	2009-05-01 18:12:22.000000000 +0100
-+++ gmixer-1.3/src/gmixer	2010-03-16 18:21:14.000000000 +0000
++++ gmixer-1.3/src/gmixer	2010-03-16 20:27:04.000000000 +0000
 @@ -79,7 +79,7 @@ for filename in STOCKS:
      factory.add(filename, gtk.IconSet(pixbuf))
  factory.add_default()
@@ -23,3 +23,42 @@
      ("headphone","headphones"),
      ("phone","phone"),
      ("video","video"),
+@@ -558,10 +558,10 @@ class GMasterProgressPopup(gtk.Window):
+         if self._track.flags & gst.interfaces.MIXER_TRACK_MUTE:
+             frac = 0
+ 
+-        if frac > 0.66 : img = "stock_volume-max"
+-        elif frac > 0.33: img = "stock_volume-med"
+-        elif frac > 0.0: img = "stock_volume-min"
+-        else: img = "stock_volume-mute"
++        if frac > 0.66 : img = "audio-volume-high"
++        elif frac > 0.33: img = "audio-volume-medium"
++        elif frac > 0.0: img = "audio-volume-low"
++        else: img = "audio-volume-muted"
+ 
+         self._icon.set_from_icon_name(img, gtk.ICON_SIZE_SMALL_TOOLBAR)
+         self._icon.set_tooltip_text(_("Volume : %d%%"%(frac*100)))
+@@ -644,7 +644,7 @@ class GMixer(gobject.GObject):
+                 self._config.getint("settings","width") , \
+                 self._config.getint("settings","height") )
+ 
+-            gtk.window_set_default_icon_name("stock_volume-max")
++            gtk.window_set_default_icon_name("audio-volume-high")
+             self._set_title()
+ 
+         gobject.timeout_add(500,self._refresh_volume)
+@@ -832,10 +832,10 @@ class GMixer(gobject.GObject):
+         if track.flags & gst.interfaces.MIXER_TRACK_MUTE:
+             frac = 0
+ 
+-        if frac > 0.66 : img = "stock_volume-max"
+-        elif frac > 0.33: img = "stock_volume-med"
+-        elif frac > 0.0: img = "stock_volume-min"
+-        else: img = "stock_volume-mute"
++        if frac > 0.66 : img = "audio-volume-high"
++        elif frac > 0.33: img = "audio-volume-medium"
++        elif frac > 0.0: img = "audio-volume-low"
++        else: img = "audio-volume-muted"
+         self._tray_image.set_from_icon_name(img, gtk.ICON_SIZE_SMALL_TOOLBAR)
+         self._tray_image.set_tooltip_text(_("Volume : %d%%"%(frac*100)))
+ 
