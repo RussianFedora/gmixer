@@ -2,7 +2,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -91,6 +91,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 1.3-15
+- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+
 * Tue Mar 16 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-14
 - complete the icon patch so it works
 
