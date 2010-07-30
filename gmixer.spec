@@ -1,8 +1,12 @@
+%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%endif
+
 
 Name:           gmixer
 Version:        1.3
-Release:        15%{?dist}
+Release:        16%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -91,6 +95,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jul 30 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-16
+- rebuild
+
 * Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 1.3-15
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
