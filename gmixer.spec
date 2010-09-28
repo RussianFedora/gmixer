@@ -6,7 +6,7 @@
 
 Name:           gmixer
 Version:        1.3
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
