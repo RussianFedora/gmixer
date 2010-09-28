@@ -18,6 +18,10 @@ Source2:        gmixer-trayicon.desktop
 Patch0:         version_fix.patch
 Patch1:         gmixer-1.3-setup-py.patch
 Patch2:         icons.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=537803
+Patch3:         gmixer-1.3-local-variable-not-assigned.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=638277
+Patch4:         gmixer-1.3-no-title.patch
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel, pygtk2-codegen, pygtk2-devel, gtk2-devel
@@ -39,6 +43,8 @@ Features:
 %patch0 -p1 -b .version_fix
 %patch1 -p1 -b .gmixer-1.3-setup-py
 %patch2 -p1 -b .icons
+%patch3 -p0 -b .local-variable-assignment
+%patch4 -p0 -b .no-title
 
 
 %build
@@ -95,6 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 28 2010 Thomas Spura <tomspur@fedoraproject.org> - 1.3-17
+- add patch to fix #537803
+- add patch fo fix #638277
+
 * Fri Jul 30 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-16
 - rebuild
 
