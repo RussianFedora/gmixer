@@ -1,5 +1,5 @@
---- gmixer.old	2010-08-31 10:54:43.000000000 +0200
-+++ gmixer	2010-08-31 10:55:07.747000063 +0200
+--- src/gmixer.old	2010-08-31 10:54:43.000000000 +0200
++++ src/gmixer	2010-08-31 10:55:07.747000063 +0200
 @@ -36,7 +36,6 @@
  import gtk
  import gtk.glade
@@ -31,10 +31,10 @@
  
      def _get_master_track(self):
          for track in self._current_mixer.list_tracks():
-@@ -836,8 +828,8 @@
-         elif frac > 0.33: img = "stock_volume-med"
-         elif frac > 0.0: img = "stock_volume-min"
-         else: img = "stock_volume-mute"
+@@ -828,8 +828,8 @@ class GMixer(gobject.GObject):
+         elif frac > 0.33: img = "audio-volume-medium"
+         elif frac > 0.0: img = "audio-volume-low"
+         else: img = "audio-volume-muted"
 -        self._tray_image.set_from_icon_name(img, gtk.ICON_SIZE_SMALL_TOOLBAR)
 -        self._tray_image.set_tooltip_text(_("Volume : %d%%"%(frac*100)))
 +        self._tray.set_from_icon_name(img)
