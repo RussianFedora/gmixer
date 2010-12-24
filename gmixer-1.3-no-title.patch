@@ -1,0 +1,17 @@
+Index: src/gmixer
+===================================================================
+--- src/gmixer
++++ src/gmixer	2010-09-28 18:17:16.265803969 +0200
+@@ -928,7 +928,11 @@
+         self._current_mixer.set_volume(self._get_master_track(),tuple(values))
+ 
+     def _set_title(self):
+-        mixerlabel = APPNAME+" - "+self._current_mixer.get_property("device-name")+" ("+self._current_mixer.get_factory().get_longname()+")"
++        device_name = self._current_mixer.get_property("device-name")
++        if device_name:
++            mixerlabel = APPNAME+" - "+device_name+" ("+self._current_mixer.get_factory().get_longname()+")"
++        else:
++            mixerlabel = APPNAME
+         self._mainwin.set_title(mixerlabel)
+ 
+     def _change_device(self,item,mixer):

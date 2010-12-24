@@ -1,0 +1,12 @@
+Index: src/gmixer
+===================================================================
+--- src/gmixer
++++ src/gmixer	2010-09-28 14:17:55.413692285 +0200
+@@ -1010,6 +1010,7 @@
+                     self._recordingbox.pack_start(obj,True,False,padding=3)
+                     self._recordingbox.pack_start(sep,False,False,padding=3)
+                 self._gvolume_dic[track.label.lower()] = obj
++        sep = gtk.VSeparator()
+         sep.hide()
+ 
+         self._playbackscroll.set_property("visible", \
