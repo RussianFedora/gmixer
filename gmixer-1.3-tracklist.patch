@@ -1,0 +1,43 @@
+From bdc86f2b48b4a552a05e2af2282f3c867c356c27 Mon Sep 17 00:00:00 2001
+From: Clemens Buchacher <drizzd@aon.at>
+Date: Tue, 4 Jan 2011 12:30:39 +0100
+Subject: [PATCH] do not use mixer devices with empty track list
+
+According to the gstreamer documentation, list_tracks [1] can
+return an empty list, but gmixer tries to read it anyways and
+crashes. This patch works around the crash by not adding a mixer
+device with an empty track list in the first place.
+
+If an 'invalid' device was configured by an older version of
+gmixer, a different device will be selected automatically.
+
+This fixes: https://bugzilla.redhat.com/show_bug.cgi?id=542255
+
+[1] http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-gstmixer.html#gst-mixer-list-tracks
+---
+ src/gmixer |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/gmixer b/src/gmixer
+index c261f3e..fece88d 100755
+--- a/src/gmixer
++++ b/src/gmixer
+@@ -734,10 +734,12 @@ class GMixer(gobject.GObject):
+                     element = feature.create()
+                     element.set_property("device",dev)
+                     element.set_state(gst.STATE_READY)
+-                    self._mixers.append(element)
++                    if element.list_tracks():
++                        self._mixers.append(element)
+             else:
+                 element.set_state(gst.STATE_READY)
+-                self._mixers.append(element)
++                if element.list_tracks():
++                    self._mixers.append(element)
+ 
+     def _load_defaults(self):
+         # Prefer alsamixer by default
+-- 
+1.7.3.1.105.g84915
+
+

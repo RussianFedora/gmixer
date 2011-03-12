@@ -1,8 +1,12 @@
+%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%endif
+
 
 Name:           gmixer
 Version:        1.3
-Release:        17%{?dist}.1
+Release:        19%{?dist}.1
 Summary:        Just a simple audio mixer
 
 Group:          Applications/Multimedia
@@ -18,6 +22,10 @@ Patch2:         icons.patch
 Patch3:         gmixer-1.3-local-variable-not-assigned.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=638277
 Patch4:         gmixer-1.3-no-title.patch
+Patch5:         trayicon_transparency.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=542255
+# patch thanks to Clemens Buchacher
+Patch6:         gmixer-1.3-tracklist.patch
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel, pygtk2-codegen, pygtk2-devel, gtk2-devel
@@ -41,6 +49,8 @@ Features:
 %patch2 -p1 -b .icons
 %patch3 -p0 -b .local-variable-assignment
 %patch4 -p0 -b .no-title
+%patch5 -p0 -b .trayicon_transparency
+%patch6 -p1 -b .tracklist
 
 
 %build
@@ -97,20 +107,22 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Sat Oct  9 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 1.3-17.1
-- apply patches from upstream
+* Thu Mar 10 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 1.3-19.1
+- not show in KDE, GNOME, XFCE
 
-* Thu Oct  6 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 1.3-15.4
-- rebuilt against gcc bug
+* Thu Feb 17 2011 Adam Williamson <awilliam@redhat.com> - 1.3-19
+- add tracklist.patch to fix the crasher when hitting a mixer device
+  with an empty tracklist (#542255) (thanks Clemens Buchacher)
 
-* Wed Sep 29 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 1.3-15.3
-- also not show in XFCE too
+* Fri Nov 26 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-18
+- add patch to fix trayicon transparency
 
-* Fri Sep 24 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 1.3-15.2
-- autostart again but not in GNOME and KDE
+* Tue Sep 28 2010 Thomas Spura <tomspur@fedoraproject.org> - 1.3-17
+- add patch to fix #537803
+- add patch fo fix #638277
 
-* Mon Aug 30 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 1.3-15.1
-- do not start gmixer at startup
+* Fri Jul 30 2010 leigh scott <leigh123linux@googlemail.com> - 1.3-16
+- rebuild
 
 * Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 1.3-15
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
